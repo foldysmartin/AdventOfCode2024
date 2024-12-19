@@ -4,7 +4,8 @@ using System.Collections.Immutable;
 var days = new Dictionary<int, Action>
 {
     { 2, RunDay2 },
-    { 3, RunDay3 }
+    { 3, RunDay3 },
+    { 4, RunDay4 }
 };
 
 if (args.Length == 0)
@@ -34,4 +35,14 @@ static void RunDay3()
     var input = File.ReadAllText("inputs/Day3.txt");
     var result = Day3.CalculateFromCorruptedMemory(input);
     Console.WriteLine(result);
+}
+
+static void RunDay4()
+{
+    var grid = File.ReadAllLines("inputs/Day4.txt").Select(line => line.Select(Day4.ConvertToLetter).ToList()).ToList();
+    grid = Day4.JoinGrid(grid);
+    Console.WriteLine($"XMAS count: {Day4.XmasCount(grid)}");
+    Console.WriteLine($"MAS in an x count: {Day4.MasXCount(grid)}");
+
+
 }
